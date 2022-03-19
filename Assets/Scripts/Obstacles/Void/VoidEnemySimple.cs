@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
+
 public class VoidEnemySimple : MonoBehaviour
 {
     [Header("Projectile")]
@@ -56,4 +56,3 @@ public class VoidEnemySimple : MonoBehaviour
         Debug.Log("hit enemy");
     }
 }
-*/
