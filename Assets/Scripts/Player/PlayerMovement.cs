@@ -22,16 +22,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-
         rb = gameObject.GetComponent<Rigidbody2D>();
-
     }
 
     private void Update()
     {
-        GroundCheck();
         GetInput();
+
+
+        GroundCheck();       
         Jump();
+        BetterJumping();
+    }
+    private void FixedUpdate()
+    {
+        if (Input.GetButton("Horizontal")) Move();
+    }
+    private void BetterJumping()
+    {
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -41,18 +49,18 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
-    private void FixedUpdate()
-    {
-        Move();
-    }
+
     public void GetInput()
     {
         moveX = Input.GetAxis("Horizontal");
     }
+
     private void Move()
     {
+        //rb.velocity = new Vector2(moveSpeed * moveX * Time.fixedDeltaTime, rb.velocity.y);
         transform.Translate((new Vector3(moveX, 0) * moveSpeed) * Time.deltaTime);
     }
+
     private void Jump()
     {
         if (!Input.GetButtonDown("Jump"))
@@ -63,8 +71,9 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        rb.velocity = Vector2.up * jumpVelocity;
+        rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
     }
+
     private void GroundCheck()
     {
         isGrounded = Physics2D.OverlapArea(bottomLeft.position, bottomRight.position, groundLayer);

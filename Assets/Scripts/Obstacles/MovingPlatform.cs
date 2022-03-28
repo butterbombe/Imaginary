@@ -28,6 +28,8 @@ public class MovingPlatform : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
     }
 
+
+    //FIX WITH ALTERNATIVE
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collision.transform.SetParent(transform);

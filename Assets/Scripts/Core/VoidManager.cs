@@ -7,6 +7,7 @@ public class VoidManager : MonoBehaviour
 
     [Header("Keybind")]
     [SerializeField] KeyCode ManipulateObjectKey = KeyCode.Tab;
+    [SerializeField] string voidObjectTag = null;
 
     [SerializeField] List<GameObject> voidObjects = new List<GameObject>();
 
@@ -14,7 +15,7 @@ public class VoidManager : MonoBehaviour
 
     private void Start()
     {
-        foreach(GameObject voidObject in GameObject.FindGameObjectsWithTag("Void"))
+        foreach(GameObject voidObject in GameObject.FindGameObjectsWithTag(voidObjectTag))
         {
             voidObjects.Add(voidObject);
         }
