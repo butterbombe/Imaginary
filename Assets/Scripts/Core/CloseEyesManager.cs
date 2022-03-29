@@ -45,16 +45,11 @@ public class CloseEyesManager : MonoBehaviour
         {
 
             voidObject.GetComponent<ObjectFader>().FadeIn();
-<<<<<<< HEAD
-            
-=======
-            //ChangeObjectActiveState(voidObject, false);
->>>>>>> VoidFader
         }
 
         foreach (GameObject sparkObject in sparkObjects)
         {
-            ChangeObjectActiveState(sparkObject, true);
+            //ChangeObjectActiveState(sparkObject, true);
         }
     }
     private void OpenEyes()
@@ -64,12 +59,11 @@ public class CloseEyesManager : MonoBehaviour
         {
 
             voidObject.GetComponent<ObjectFader>().FadeOut();
-            //ChangeObjectActiveState(voidObject, true);
         }
 
         foreach (GameObject sparkObject in sparkObjects)
         {
-            ChangeObjectActiveState(sparkObject, false);
+            //ChangeObjectActiveState(sparkObject, false);
         }
     }
 
