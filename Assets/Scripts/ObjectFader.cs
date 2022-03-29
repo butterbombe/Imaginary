@@ -9,16 +9,33 @@ public class ObjectFader : MonoBehaviour
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
+    private void LateUpdate()
+    {
+        if (spriteRenderer.color.a > 0)
+        {
+            ChangeObjectActiveState(gameObject, true);
+        }
+        else
+        {
+            ChangeObjectActiveState(gameObject, false);
+        }
+    }
 
     public void FadeIn()
     {
         StopAllCoroutines();
         StartCoroutine(FadeInCoroutine());
+
     }
     public void FadeOut()
     {
         StopAllCoroutines();
         StartCoroutine(FadeOutCoroutine());
+        
+    }
+    private void ChangeObjectActiveState(GameObject gameObj, bool isActive)
+    {
+        gameObj.GetComponent<Collider2D>().enabled = isActive;
     }
 
     public IEnumerator FadeInCoroutine()
@@ -26,7 +43,6 @@ public class ObjectFader : MonoBehaviour
 
         float alphaVal = spriteRenderer.color.a;
         Color tmp = spriteRenderer.color;
-
         while (spriteRenderer.color.a > 0)
         {
             alphaVal -= 0.1f;
@@ -36,11 +52,12 @@ public class ObjectFader : MonoBehaviour
             yield return new WaitForSeconds(0.05f); // update interval
         }
     }
+
     public IEnumerator FadeOutCoroutine()
     {
+
         float alphaVal = spriteRenderer.color.a;
         Color tmp = spriteRenderer.color;
-
         while (spriteRenderer.color.a < 1)
         {
             alphaVal += 0.1f;
