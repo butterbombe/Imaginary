@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6990144628988053130}
   - component: {fileID: 6990144628988053131}
   m_Layer: 0
-  m_Name: Void Manager
+  m_Name: CloseEyesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
