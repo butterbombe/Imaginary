@@ -43,7 +43,8 @@ public class CloseEyesManager : MonoBehaviour
     {
         foreach (GameObject voidObject in voidObjects)
         {
-            voidObject.GetComponent<ObjectFader>().FadeOut();
+
+            voidObject.GetComponent<ObjectFader>().FadeIn();
             //ChangeObjectActiveState(voidObject, false);
         }
 
@@ -57,7 +58,8 @@ public class CloseEyesManager : MonoBehaviour
         
         foreach (GameObject voidObject in voidObjects)
         {
-            voidObject.GetComponent<ObjectFader>().FadeIn();
+
+            voidObject.GetComponent<ObjectFader>().FadeOut();
             //ChangeObjectActiveState(voidObject, true);
         }
 

@@ -12,35 +12,18 @@ public class ObjectFader : MonoBehaviour
 
     public void FadeIn()
     {
-        float alpha = spriteRenderer.color.a;
-        Color tempColor = spriteRenderer.color;
-
-        while (spriteRenderer.color.a > 0)
-        {
-            alpha -= Time.deltaTime;
-            tempColor.a = alpha;
-            spriteRenderer.color = tempColor;
-        }
+        StopAllCoroutines();
+        StartCoroutine(FadeInCoroutine());
     }
-
-
     public void FadeOut()
     {
-        float alpha = spriteRenderer.color.a;
-        Color tempColor = spriteRenderer.color;
-
-        while (spriteRenderer.color.a < 1)
-        {
-            alpha += Time.deltaTime;
-            tempColor.a = alpha;
-            spriteRenderer.color = tempColor;
-        }
+        StopAllCoroutines();
+        StartCoroutine(FadeOutCoroutine());
     }
-
-
 
     public IEnumerator FadeInCoroutine()
     {
+
         float alphaVal = spriteRenderer.color.a;
         Color tmp = spriteRenderer.color;
 

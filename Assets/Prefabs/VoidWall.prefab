@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8934884491250772415}
   - component: {fileID: 8934884491250772412}
   - component: {fileID: 8934884491250772414}
+  - component: {fileID: 1350500499}
   m_Layer: 6
   m_Name: VoidWall
   m_TagString: VoidObject
@@ -131,3 +132,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1350500499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934884491250772410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20936ee33d26ecb43844c4f5b8533440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
