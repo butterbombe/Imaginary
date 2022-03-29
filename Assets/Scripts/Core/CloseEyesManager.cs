@@ -45,7 +45,11 @@ public class CloseEyesManager : MonoBehaviour
         {
 
             voidObject.GetComponent<ObjectFader>().FadeIn();
+<<<<<<< HEAD
             
+=======
+            //ChangeObjectActiveState(voidObject, false);
+>>>>>>> VoidFader
         }
 
         foreach (GameObject sparkObject in sparkObjects)
