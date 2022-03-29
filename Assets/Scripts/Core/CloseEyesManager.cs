@@ -6,7 +6,7 @@ public class CloseEyesManager : MonoBehaviour
 {
 
     [Header("Keybind")]
-    [SerializeField] KeyCode ManipulateObjectKey = KeyCode.Tab;
+    [SerializeField] public KeyCode ManipulateObjectKey = KeyCode.Tab;
     [SerializeField] string voidObjectTag = null;
     [SerializeField] string sparkObjectTag = null;
 
@@ -43,8 +43,11 @@ public class CloseEyesManager : MonoBehaviour
     {
         foreach (GameObject voidObject in voidObjects)
         {
-            ChangeObjectActiveState(voidObject, false);
+
+            voidObject.GetComponent<ObjectFader>().FadeIn();
+            
         }
+
         foreach (GameObject sparkObject in sparkObjects)
         {
             ChangeObjectActiveState(sparkObject, true);
@@ -52,18 +55,19 @@ public class CloseEyesManager : MonoBehaviour
     }
     private void OpenEyes()
     {
+        
         foreach (GameObject voidObject in voidObjects)
         {
-            ChangeObjectActiveState(voidObject, true);
+
+            voidObject.GetComponent<ObjectFader>().FadeOut();
+            //ChangeObjectActiveState(voidObject, true);
         }
+
         foreach (GameObject sparkObject in sparkObjects)
         {
             ChangeObjectActiveState(sparkObject, false);
         }
     }
-    private void ChangeObjectActiveState(GameObject gameObj, bool isActive)
-    {
-        gameObj.SetActive(isActive);
-    }
+
 
 }
