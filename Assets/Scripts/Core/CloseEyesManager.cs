@@ -13,10 +13,13 @@ public class CloseEyesManager : MonoBehaviour
     [SerializeField] List<GameObject> voidObjects = new List<GameObject>();
     [SerializeField] List<GameObject> sparkObjects = new List<GameObject>();
 
+    private Animator eyesAnimator;
 
 
     private void Awake()
     {
+        eyesAnimator = FindObjectOfType<Eyes>().gameObject.GetComponent<Animator>();
+        
         foreach(GameObject voidObject in GameObject.FindGameObjectsWithTag(voidObjectTag))
         {
             voidObjects.Add(voidObject);
@@ -41,9 +44,10 @@ public class CloseEyesManager : MonoBehaviour
 
     private void CloseEyes()
     {
+        eyesAnimator.SetTrigger("CloseEyes");
         foreach (GameObject voidObject in voidObjects)
         {
-
+            
             voidObject.GetComponent<ObjectFader>().FadeIn();
         }
 
@@ -54,7 +58,7 @@ public class CloseEyesManager : MonoBehaviour
     }
     private void OpenEyes()
     {
-        
+        eyesAnimator.SetTrigger("OpenEyes");
         foreach (GameObject voidObject in voidObjects)
         {
 

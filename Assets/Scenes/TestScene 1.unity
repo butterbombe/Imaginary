@@ -662,6 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 783698540}
   - component: {fileID: 783698541}
+  - component: {fileID: 783698542}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -704,6 +705,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &783698542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783698539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2b7dd31a241244dad98244eed5843c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &824865859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3203,17 +3216,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4599282549486502080, guid: 95392a0bf4e26f24fbeb169baa2e0cfc, type: 3}
-      propertyPath: buttonPressed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599282549486502080, guid: 95392a0bf4e26f24fbeb169baa2e0cfc, type: 3}
       propertyPath: buttonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 224264934}
-    - target: {fileID: 4599282549486502080, guid: 95392a0bf4e26f24fbeb169baa2e0cfc, type: 3}
-      propertyPath: buttonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
     - target: {fileID: 4599282550132573892, guid: 95392a0bf4e26f24fbeb169baa2e0cfc, type: 3}
       propertyPath: m_Name
       value: Button
