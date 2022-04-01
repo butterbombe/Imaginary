@@ -24,5 +24,4 @@ public class FallingPlatform : MonoBehaviour
         yield return new WaitForSeconds(fallTime);
         Destroy(gameObject);
     }
-
 }

@@ -45,11 +45,11 @@ public class ObjectFader : MonoBehaviour
         Color tmp = spriteRenderer.color;
         while (spriteRenderer.color.a > 0)
         {
-            alphaVal -= 0.1f;
+            alphaVal -= 0.05f;
             tmp.a = alphaVal;
             spriteRenderer.color = tmp;
 
-            yield return new WaitForSeconds(0.05f); // update interval
+            yield return new WaitForSeconds(0.02f); // update interval
         }
     }
 
