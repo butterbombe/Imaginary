@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,10 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private float moveX;
-    private bool isGrounded;
-
-
-    private void Start()
+    private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
@@ -28,15 +26,13 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         GetInput();
-
-
-        GroundCheck();       
         Jump();
         BetterJumping();
     }
+
     private void FixedUpdate()
     {
-        if (Input.GetButton("Horizontal")) Move();
+        Move();
     }
     private void BetterJumping()
     {
@@ -57,25 +53,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        //rb.velocity = new Vector2(moveSpeed * moveX * Time.fixedDeltaTime, rb.velocity.y);
-        transform.Translate((new Vector3(moveX, 0) * moveSpeed) * Time.deltaTime);
+        rb.velocity = (new Vector2(moveX * moveSpeed * Time.deltaTime, rb.velocity.y));
     }
 
     private void Jump()
     {
-        if (!Input.GetButtonDown("Jump"))
-        {
-            return;
-        }
-        if (!isGrounded)
-        {
-            return;
-        }
-        rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
+        if (!Input.GetButtonDown("Jump")) return;
+        if (!isGrounded()) return;
+        rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse); 
     }
 
-    private void GroundCheck()
+    private bool isGrounded()
     {
-        isGrounded = Physics2D.OverlapArea(bottomLeft.position, bottomRight.position, groundLayer);
+        return Physics2D.OverlapArea(bottomLeft.position, bottomRight.position, groundLayer);    
     }
 }
