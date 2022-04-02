@@ -8,9 +8,13 @@ public class CloseEyesManager : MonoBehaviour
     [SerializeField] public KeyCode ManipulateObjectKey = KeyCode.Tab;
     [SerializeField] string voidObjectTag = null;
     [SerializeField] string sparkObjectTag = null;
+    [SerializeField] string voidParticleTag = null;
+    [SerializeField] string sparkParticleTag = null;
 
     [SerializeField] List<GameObject> voidObjects = new List<GameObject>();
     [SerializeField] List<GameObject> sparkObjects = new List<GameObject>();
+    [SerializeField] List<GameObject> voidParticles = new List<GameObject>();
+    [SerializeField] List<GameObject> sparkParticles = new List<GameObject>();
 
     private Animator eyesAnimator;
 
@@ -23,9 +27,17 @@ public class CloseEyesManager : MonoBehaviour
         {
             voidObjects.Add(voidObject);
         }
-        foreach (GameObject voidObject in GameObject.FindGameObjectsWithTag(sparkObjectTag))
+        foreach (GameObject sparkObject in GameObject.FindGameObjectsWithTag(sparkObjectTag))
         {
-            voidObjects.Add(voidObject);
+            sparkObjects.Add(sparkObject);
+        }
+        foreach (GameObject voidParticle in GameObject.FindGameObjectsWithTag(voidParticleTag))
+        {
+            voidParticles.Add(voidParticle);
+        }
+        foreach (GameObject sparkParticle in GameObject.FindGameObjectsWithTag(sparkParticleTag))
+        {
+            sparkParticles.Add(sparkParticle);
         }
     }
 
@@ -46,14 +58,23 @@ public class CloseEyesManager : MonoBehaviour
         eyesAnimator.SetTrigger("CloseEyes");
         foreach (GameObject voidObject in voidObjects)
         {
-            
             voidObject.GetComponent<ObjectFader>().FadeIn();
         }
 
-        foreach (GameObject sparkObject in sparkObjects)
+        //foreach (GameObject sparkObject in sparkObjects)
+        //{
+        //    //ChangeObjectActiveState(sparkObject, true);
+        //}
+
+        foreach (GameObject voidParticle in voidParticles)
         {
-            //ChangeObjectActiveState(sparkObject, true);
+            voidParticle.GetComponent<ParticleFader>().FadeIn();
         }
+
+        //foreach (GameObject sparkParticle in sparkParticles)
+        //{
+        //    sparkParticle.GetComponent<ParticleFader>().FadeIn();
+        //}
     }
     private void OpenEyes()
     {
@@ -64,10 +85,15 @@ public class CloseEyesManager : MonoBehaviour
             voidObject.GetComponent<ObjectFader>().FadeOut();
         }
 
-        foreach (GameObject sparkObject in sparkObjects)
+        foreach (GameObject voidParticle in voidParticles)
         {
-            //ChangeObjectActiveState(sparkObject, false);
+            voidParticle.GetComponent<ParticleFader>().FadeOut();
         }
+
+        //foreach (GameObject sparkObject in sparkObjects)
+        //{
+        //    //ChangeObjectActiveState(sparkObject, false);
+        //}
     }
 
 

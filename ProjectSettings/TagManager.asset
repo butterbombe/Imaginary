@@ -6,6 +6,8 @@ TagManager:
   tags:
   - VoidObject
   - SparkObject
+  - VoidParticle
+  - SparkParticle
   layers:
   - Default
   - TransparentFX
