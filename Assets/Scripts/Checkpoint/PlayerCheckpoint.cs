@@ -29,19 +29,20 @@ public class PlayerCheckpoint : MonoBehaviour
 
     IEnumerator ResetCoroutine()
     {
-        ChangeSpriteRendererState(false);
+        ChangePlayerActiveState(false);
         ParticleSystem particleSys = Instantiate(deathParticle, gameObject.transform);
         yield return new WaitForSeconds(resetTime);
         transform.position = lastCheckpoint.checkpointSpawnPosition.position;
-        ChangeSpriteRendererState(true);
+        ChangePlayerActiveState(true);
         Destroy(particleSys);
     }
 
-    void ChangeSpriteRendererState(bool isActive)
+    void ChangePlayerActiveState(bool isActive)
     {
         PlayerMovement playerController = gameObject.GetComponent<PlayerMovement>();
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerController.enabled = isActive;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         spriteRenderer.enabled = isActive;
     }
 }

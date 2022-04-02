@@ -115,7 +115,7 @@ public class CloseEyesManager : MonoBehaviour
         }
         foreach (GameObject voidParticle in voidParticles)
         {
-            voidParticle.GetComponent<ParticleFader>().FadeIn();
+            voidParticle.GetComponent<ParticleFader>().FadeOut();
         }
     }
 }
