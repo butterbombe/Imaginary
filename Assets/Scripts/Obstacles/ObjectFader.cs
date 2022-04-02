@@ -5,19 +5,38 @@ using UnityEngine;
 public class ObjectFader : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    [SerializeField] bool isVoid;
     private void Awake()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (!isVoid)
+        {
+            FadeOut();
+        }
     }
     private void LateUpdate()
     {
-        if (spriteRenderer.color.a > 0)
+        if (isVoid)
         {
-            ChangeObjectActiveState(gameObject, true);
+            if (spriteRenderer.color.a > 0)
+            {
+                ChangeObjectActiveState(gameObject, true);
+            }
+            else
+            {
+                ChangeObjectActiveState(gameObject, false);
+            }
         }
-        else
+        if (!isVoid)
         {
-            ChangeObjectActiveState(gameObject, false);
+            if (spriteRenderer.color.a == 1)
+            {
+                ChangeObjectActiveState(gameObject, true);
+            }
+            else
+            {
+                ChangeObjectActiveState(gameObject, false);
+            }
         }
     }
 
@@ -64,7 +83,7 @@ public class ObjectFader : MonoBehaviour
             tmp.a = alphaVal;
             spriteRenderer.color = tmp;
 
-            yield return new WaitForSeconds(0.02f); // update interval
+            yield return new WaitForSeconds(0.03f); // update interval
         }
     }
 }

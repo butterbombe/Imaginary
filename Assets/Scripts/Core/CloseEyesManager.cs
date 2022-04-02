@@ -56,45 +56,66 @@ public class CloseEyesManager : MonoBehaviour
     private void CloseEyes()
     {
         eyesAnimator.SetTrigger("CloseEyes");
-        foreach (GameObject voidObject in voidObjects)
-        {
-            voidObject.GetComponent<ObjectFader>().FadeIn();
-        }
 
-        //foreach (GameObject sparkObject in sparkObjects)
-        //{
-        //    //ChangeObjectActiveState(sparkObject, true);
-        //}
+        FadeVoidsOut();
 
-        foreach (GameObject voidParticle in voidParticles)
-        {
-            voidParticle.GetComponent<ParticleFader>().FadeIn();
-        }
-
-        //foreach (GameObject sparkParticle in sparkParticles)
-        //{
-        //    sparkParticle.GetComponent<ParticleFader>().FadeIn();
-        //}
+        FadeSparksIn();
     }
     private void OpenEyes()
     {
         eyesAnimator.SetTrigger("OpenEyes");
+
+        FadeVoidsIn();
+
+        FadeSparksOut();
+    }
+
+    private void FadeSparksIn()
+    {
+        foreach (GameObject sparkObject in sparkObjects)
+        {
+            sparkObject.GetComponent<ObjectFader>().FadeOut();
+        }
+        foreach (GameObject sparkParticle in sparkParticles)
+        {
+            sparkParticle.GetComponent<ParticleFader>().FadeOut();
+        }
+    }
+
+    private void FadeVoidsOut()
+    {
         foreach (GameObject voidObject in voidObjects)
         {
-
-            voidObject.GetComponent<ObjectFader>().FadeOut();
+            voidObject.GetComponent<ObjectFader>().FadeIn();
         }
-
         foreach (GameObject voidParticle in voidParticles)
         {
-            voidParticle.GetComponent<ParticleFader>().FadeOut();
+            voidParticle.GetComponent<ParticleFader>().FadeIn();
         }
-
-        //foreach (GameObject sparkObject in sparkObjects)
-        //{
-        //    //ChangeObjectActiveState(sparkObject, false);
-        //}
     }
 
 
+    private void FadeSparksOut()
+    {
+        foreach (GameObject sparkObject in sparkObjects)
+        {
+            sparkObject.GetComponent<ObjectFader>().FadeIn();
+        }
+        foreach (GameObject sparkParticle in sparkParticles)
+        {
+            sparkParticle.GetComponent<ParticleFader>().FadeOut();
+        }
+    }
+
+    private void FadeVoidsIn()
+    {
+        foreach (GameObject voidObject in voidObjects)
+        {
+            voidObject.GetComponent<ObjectFader>().FadeOut();
+        }
+        foreach (GameObject voidParticle in voidParticles)
+        {
+            voidParticle.GetComponent<ParticleFader>().FadeIn();
+        }
+    }
 }
