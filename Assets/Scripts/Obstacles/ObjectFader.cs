@@ -29,13 +29,13 @@ public class ObjectFader : MonoBehaviour
         }
         if (!isVoid)
         {
-            if (spriteRenderer.color.a == 1)
+            if (spriteRenderer.color.a < 1)
             {
-                ChangeObjectActiveState(gameObject, true);
+                ChangeObjectActiveState(gameObject, false);
             }
             else
             {
-                ChangeObjectActiveState(gameObject, false);
+                ChangeObjectActiveState(gameObject, true);
             }
         }
     }

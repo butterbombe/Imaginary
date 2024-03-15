@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour
 {
-    [SerializeField] float fallTime = 3f;
+    [SerializeField] float fallTimeUntilDestroy = 3f;
 
     Rigidbody2D rb;
     private void Awake()
@@ -21,7 +21,7 @@ public class FallingPlatform : MonoBehaviour
     IEnumerator FallAndDisable()
     {
         rb.isKinematic = false;
-        yield return new WaitForSeconds(fallTime);
+        yield return new WaitForSeconds(fallTimeUntilDestroy);
         Destroy(gameObject);
     }
 }
